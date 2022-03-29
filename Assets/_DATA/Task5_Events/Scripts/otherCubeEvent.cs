@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class otherCubeEvent : MonoBehaviour
 {
     public GameObject target;
@@ -9,14 +6,19 @@ public class otherCubeEvent : MonoBehaviour
     {
         cubeEvent.OnClick += Revolve;
     }
-    void Update()
+    /*
+    Animator anim;
+    void Start()
     {
-        cubeEvent.OnClick();
+        anim = GetComponent<Animator>();
+        anim.enabled = false;
     }
+    */
     void Revolve()
     {
+        //anim.enabled = true;
         transform.RotateAround(target.transform.position, Vector3.up, 50f * Time.deltaTime);
-        Debug.Log("Revolves");
+        Debug.Log("Revolves(other cubes)");
     }
     void OnDisable()
     {

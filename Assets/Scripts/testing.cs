@@ -1,17 +1,27 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class testing : MonoBehaviour
 {
-    void Start()
+    delegate IEnumerator myDel();
+    myDel del;
+    
+    void OnEnable()
     {
-        MyCoroutine();
+        del += MyCoroutine;
+    }
+    void Update()
+    {
+        if(Input.anyKey)
+            StartCoroutine(del());
     }
     IEnumerator MyCoroutine()
     {
-        Debug.Log("Hello world");
         yield return null;
+        transform.Rotate(Vector3.up);
     }
-
+    void OnDisable()
+    {
+        del -= MyCoroutine;
+    }
 }
