@@ -5,6 +5,15 @@ public class UIandCamera : MonoBehaviour
     public Canvas canvas;
     public Camera[] cam;
     public Toggle toggle;
+    void Update()
+    {
+        //Zooming with mouse-scroll
+        Debug.Log(Input.mouseScrollDelta);
+        if (toggle.isOn == false)
+            cam[1].transform.Translate(Vector3.forward * Input.GetAxis("Mouse ScrollWheel"));
+        else
+            cam[0].transform.Translate(Vector3.forward * Input.GetAxis("Mouse ScrollWheel"));
+    }
     public void OnToggle()
     {
         if (toggle.isOn == false)
@@ -26,6 +35,7 @@ public class UIandCamera : MonoBehaviour
             Debug.Log("Do something not");
         }
     }
+
     public void OnZoomIn()
     {
         if (toggle.isOn == false)
@@ -45,21 +55,5 @@ public class UIandCamera : MonoBehaviour
         }
         else
             cam[0].transform.Translate(0, 0, -1);
-    }
-
-    void OnMouseDrag()
-    {
-        if (toggle.isOn == false)
-        {
-            transform.position = cam[1].ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-            Input.mousePosition.y, cam[1].WorldToScreenPoint(transform.position).z));
-            Debug.Log(transform.position);
-        }
-        else
-        {
-            transform.position = cam[0].ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-            Input.mousePosition.y, cam[0].WorldToScreenPoint(transform.position).z));
-            Debug.Log(transform.position);
-        }
     }
 }

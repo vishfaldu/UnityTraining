@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Scene6_Lights&Camera.unity
+    guid: e58c1e900b4a5694f9f94ae356864564
   m_configObjects: {}

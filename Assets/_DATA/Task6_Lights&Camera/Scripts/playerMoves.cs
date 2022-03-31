@@ -4,10 +4,7 @@ public class playerMoves : MonoBehaviour
 {
     public Toggle toggle;
     public Camera[] cam;
-    void Start()
-    {
 
-    }
     void OnMouseDrag()
     {
         if (toggle.isOn == false)
